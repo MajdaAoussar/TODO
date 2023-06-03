@@ -1,0 +1,24 @@
+body {
+    padding: 10px;
+}
+
+#index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3a68bd;
+    font-size: 60px;
+    height: 200px;
+}
+
+.inputTop {
+    margin-top: 4px;
+}
+
+.task {
+    align-items: center;
+    height: 40px;
+    border: 1px solid #dddde0;
+    border-radius: 10px;
+    margin-bottom: 2px;
+}

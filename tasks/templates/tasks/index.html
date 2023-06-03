@@ -1,0 +1,40 @@
+{% extends "tasks/layout.html" %}
+
+{% block title %}
+  TODO List
+{% endblock %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+       <div class="container">
+          <br>
+          <span class="fw-light">Add new task</span>
+          <form action={% url 'addTask' %} method="post">
+             {% csrf_token %}
+             {{taskForm}}
+             <input type="hidden" name="user" value={{user.id}}>
+             <button type="submit" class="btn btn-primary btn-sm inputTop">Add</button>
+          </form>
+          <br>
+          <hr>
+          <h2>Your Tasks </h2>
+           {% if allTasks %}
+                {% for task in allTasks %}
+                  <div class="row task">
+                      <div class="col-6">{{task.description}}</div>
+                      <div class="col-4 fw-light">{{task.time}}</div>
+                      {% if task.done %}
+                         <div class="col-2 fw-light" style="background-color: #dddde1">done</div>
+                      {% else %}
+                         <div class="col-2 fw-light">undone</div>
+                      {% endif %}
+                  </div>
+                {% endfor %}
+            {% else %}
+               <div class="fw-light">No tasks yet</div>
+            {% endif %}    
+       </div>
+    {% else %}
+       <div id="index">Welcome everyone</div>
+    {% endif %}
+{% endblock %}
