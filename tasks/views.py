@@ -68,3 +68,10 @@ def addTask(request):
             form.fields["user"]= request.POST["user"]
             form.save()
             return HttpResponseRedirect(reverse("index"))
+
+@login_required        
+def taskDone(request, ID):
+    task= Task.objects.get(pk=ID)
+    task.done= True
+    task.save(update_fields=['done'])
+    return HttpResponseRedirect(reverse("index"))    

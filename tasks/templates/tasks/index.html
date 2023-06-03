@@ -24,9 +24,9 @@
                       <div class="col-6">{{task.description}}</div>
                       <div class="col-4 fw-light">{{task.time}}</div>
                       {% if task.done %}
-                         <div class="col-2 fw-light" style="background-color: #dddde1">done</div>
+                         <div class="col-2 fw-light">done</div>
                       {% else %}
-                         <div class="col-2 fw-light">undone</div>
+                         <div class="col-2 fw-light"><a href="{% url 'taskDone' ID=task.id %}" class="btn btn-success btn-sm">Mark as done</a></div>
                       {% endif %}
                   </div>
                 {% endfor %}
